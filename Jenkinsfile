@@ -54,6 +54,7 @@ pipeline {
             echo 'Stoping and Deleting the container '
             sh 'docker stop my-hotense-slick-app-v$BUILD_NUMBER'
             sh 'docker rm my-hotense-slick-app-v$BUILD_NUMBER'
+            sh 'docker logout'
         }
     }
 }
