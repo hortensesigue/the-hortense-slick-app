@@ -36,7 +36,7 @@ pipeline {
             }
         }
         
-        stage('Deploy') {
+        stage('Deploy to DokerHub') {
             steps {
                 echo 'Lets log into our DockerHb'
                 sh 'docker login -u$DOCKERHUB_CREDENTIALS_ID_USR -p$DOCKERHUB_CREDENTIALS_ID_PSW'
@@ -45,6 +45,13 @@ pipeline {
                 sh 'docker push $DOCKER_REPOSITORY:v$BUILD_NUMBER'
                 
                 sh 'echo the following docker image of my slick app was pushed successfully to DockerHub $DOCKER_REPOSITORY:v$BUILD_NUMBER'
+            }
+        }
+
+        stage('Deploy to k8') {
+            steps {
+                echo 'testing the connectiviy to the cluster'
+                sh 'kubectl get nodes'
             }
         }
     }
