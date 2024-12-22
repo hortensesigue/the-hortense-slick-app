@@ -17,7 +17,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                echo 'Building my slick app container image'
+                echo 'Building my slick app container images'
                 sh 'docker build -t $DOCKER_REPOSITORY:v$BUILD_NUMBER .'
             }
         }
