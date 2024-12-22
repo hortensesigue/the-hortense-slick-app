@@ -52,6 +52,8 @@ pipeline {
             steps {
                 echo 'testing the connectiviy to the cluster'
                 sh 'kubectl get nodes'
+                sh 'kubectl apply -f my-slick-app-deployment.yml'
+                sh 'kubectl apply -f my-slick-app-service.yml'
             }
         }
     }
